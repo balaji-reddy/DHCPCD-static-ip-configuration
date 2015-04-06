@@ -22,5 +22,5 @@ There are two ways to setup DHCPCD with static IP configuration.
 
 Note:
 	-q, quite mode
-    -m, --metric set to 0 (dhcpcd will supply a default metic of 200 + if_nametoindex(3))
+        -m, --metric set to 0 (dhcpcd will supply a default metic of 200 + if_nametoindex(3))
         
