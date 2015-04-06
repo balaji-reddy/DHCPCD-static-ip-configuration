@@ -1,0 +1,26 @@
+There are two ways to setup DHCPCD with static IP configuration.
+
+1) Config file
+	Append below lines to /etc/dhcpcd.conf
+
+	static ip_address=$IP_ADDRESS
+	static subnet_mask=$SUBNET_MASK
+	static broadcast_address=$BROADCAST_ADDRESS
+	static routers=$GATE_WAY_ADDRESS
+	static domain_name_servers=$GATE_WAY_ADDRESS, $DNS1, DNS2
+
+
+	Replace variables with actual values and then run below command.
+
+	dhcpcd -q -m 0 eth0 
+
+2) Command Line
+
+	DHCPCD_OPTIONS="-S ip_address=$ipAddress -S subnet_mask=$subnetMask -S broadcast_address=$broadcastAddress -S routers=$gateway -S domain_name_servers=$gateway $dns1 $dns2"
+
+	dhcpcd -q -m 0 $DHCPCD_OPTIONS eth0 
+
+Note:
+	-q, quite mode
+    -m, --metric set to 0 (dhcpcd will supply a default metic of 200 + if_nametoindex(3))
+        
